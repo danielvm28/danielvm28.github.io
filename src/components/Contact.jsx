@@ -2,15 +2,12 @@ import { useState } from 'react';
 import { personalInfo } from '../data/content';
 import './Contact.css';
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xqekkyvv';
-
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
-  const [status, setStatus] = useState('idle'); // idle, submitting, success, error
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,29 +17,14 @@ function Contact() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus('submitting');
-
-    try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -97,98 +79,57 @@ function Contact() {
             </div>
           </div>
 
-          {status === 'success' ? (
-            <div className="contact__success">
-              <div className="contact__success-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-              </div>
-              <h3>Message Sent!</h3>
-              <p>Thanks for reaching out. I'll get back to you soon!</p>
-              <button 
-                className="btn btn-secondary" 
-                onClick={() => setStatus('idle')}
-              >
-                Send Another Message
-              </button>
+          <form className="contact__form" onSubmit={handleSubmit}>
+            <div className="contact__form-group">
+              <label htmlFor="name" className="contact__label">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="contact__input"
+                placeholder="Your name"
+                required
+              />
             </div>
-          ) : (
-            <form className="contact__form" onSubmit={handleSubmit}>
-              {status === 'error' && (
-                <div className="contact__error">
-                  Something went wrong. Please try again or email me directly.
-                </div>
-              )}
-              
-              <div className="contact__form-group">
-                <label htmlFor="name" className="contact__label">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="contact__input"
-                  placeholder="Your name"
-                  required
-                  disabled={status === 'submitting'}
-                />
-              </div>
 
-              <div className="contact__form-group">
-                <label htmlFor="email" className="contact__label">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="contact__input"
-                  placeholder="your@email.com"
-                  required
-                  disabled={status === 'submitting'}
-                />
-              </div>
+            <div className="contact__form-group">
+              <label htmlFor="email" className="contact__label">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="contact__input"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
 
-              <div className="contact__form-group">
-                <label htmlFor="message" className="contact__label">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="contact__textarea"
-                  placeholder="Your message..."
-                  rows="5"
-                  required
-                  disabled={status === 'submitting'}
-                ></textarea>
-              </div>
+            <div className="contact__form-group">
+              <label htmlFor="message" className="contact__label">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                className="contact__textarea"
+                placeholder="Your message..."
+                rows="5"
+                required
+              ></textarea>
+            </div>
 
-              <button 
-                type="submit" 
-                className="btn btn-primary contact__submit"
-                disabled={status === 'submitting'}
-              >
-                {status === 'submitting' ? (
-                  <>
-                    <span className="contact__spinner"></span>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="22" y1="2" x2="11" y2="13"></line>
-                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                    Send Message
-                  </>
-                )}
-              </button>
-            </form>
-          )}
+            <button type="submit" className="btn btn-primary contact__submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              Send Message
+            </button>
+          </form>
         </div>
       </div>
     </section>
@@ -196,3 +137,6 @@ function Contact() {
 }
 
 export default Contact;
+
+
+
