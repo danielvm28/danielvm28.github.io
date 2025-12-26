@@ -32,7 +32,7 @@ export const personalInfo = {
 };
 
 export const aboutMe = {
-  bio: "I am a Computer Science student at the University of Maryland with experience in software engineering, machine learning, and distributed systems. I am passionate about solving complex problems and building impactful solutions, with experience across a variety of projects ranging from financial systems to educational VR games. I have worked with a variety of technologies and am particularly interested in backend systems and understanding how large-scale systems connect and operate end to end.",
+  bio: "I am a Computer Science student at the University of Maryland with a background in software engineering, machine learning, and distributed systems. I am passionate about solving complex problems and building impactful solutions, with experience across a variety of projects ranging from financial systems to educational VR games. I have worked with multiple technologies and am particularly interested in backend systems and understanding how large-scale systems connect and operate end to end.",
   personal: "When I am not coding, I enjoy staying active at the gym, traveling and playing video games.",
   stats: [
     { label: "Programming Languages", value: "12+" },
