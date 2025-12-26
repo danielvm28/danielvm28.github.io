@@ -7,7 +7,6 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: var(--space-12);
-  margin-bottom: var(--space-16);
 }
 
 .about__text {
