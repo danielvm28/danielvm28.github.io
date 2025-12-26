@@ -61,111 +61,6 @@
   margin-top: var(--space-1);
 }
 
-/* Leadership section */
-.about__leadership {
-  margin-top: var(--space-12);
-}
-
-.about__leadership-title {
-  font-family: var(--font-mono);
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-6);
-  color: var(--color-text);
-}
-
-.about__leadership-title::before {
-  content: '# ';
-  color: var(--syntax-purple);
-}
-
-.about__leadership-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-6);
-}
-
-.about__leadership-card {
-  display: flex;
-  flex-direction: column;
-}
-
-.about__leadership-header {
-  display: flex;
-  gap: var(--space-4);
-  margin-bottom: var(--space-4);
-}
-
-.about__leadership-logo {
-  width: 56px;
-  height: 56px;
-  flex-shrink: 0;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background-color: var(--color-bg);
-  border: 2px solid var(--color-accent);
-  box-shadow: 0 0 12px rgba(88, 166, 255, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.about__leadership-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 4px;
-}
-
-.about__leadership-info h4 {
-  font-size: var(--text-base);
-  font-weight: 600;
-  margin-bottom: var(--space-1);
-}
-
-.about__leadership-org {
-  display: block;
-  font-size: var(--text-sm);
-  color: var(--color-accent);
-  margin-bottom: var(--space-1);
-}
-
-.about__leadership-dates {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--color-text-light);
-}
-
-.about__leadership-highlights {
-  flex: 1;
-  list-style: none;
-  padding-left: 0;
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  line-height: 1.6;
-}
-
-.about__leadership-highlights li {
-  position: relative;
-  padding-left: var(--space-4);
-  margin-bottom: var(--space-2);
-}
-
-.about__leadership-highlights li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--syntax-green);
-  font-family: var(--font-mono);
-}
-
-.about__leadership-link {
-  margin-top: var(--space-4);
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  font-weight: 500;
-}
-
 /* Responsive */
 @media (max-width: 1024px) {
   .about__content {
@@ -185,19 +80,11 @@
 }
 
 @media (max-width: 768px) {
-  .about__leadership-grid {
-    grid-template-columns: 1fr;
-  }
-
   .about__stats {
     flex-direction: column;
   }
 
   .about__stat {
     min-width: auto;
-  }
-
-  .about__leadership-header {
-    flex-direction: column;
   }
 }
