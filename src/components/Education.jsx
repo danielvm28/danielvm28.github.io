@@ -1,4 +1,4 @@
-import { education, leadership } from '../data/content';
+import { education } from '../data/content';
 import './Education.css';
 
 function Education() {
@@ -56,41 +56,6 @@ function Education() {
               )}
             </div>
           ))}
-        </div>
-
-        <div className="education__leadership">
-          <h3 className="education__leadership-title">Leadership & Activities</h3>
-          <div className="education__leadership-grid">
-            {leadership.map((item) => (
-              <div key={item.id} className="education__leadership-card card">
-                <div className="education__leadership-header">
-                  <div className="education__leadership-logo">
-                    <img src={item.logo} alt={`${item.organization} logo`} />
-                  </div>
-                  <div className="education__leadership-info">
-                    <h4>{item.title}</h4>
-                    <span className="education__leadership-org">{item.organization}</span>
-                    <span className="education__leadership-dates">{item.dates}</span>
-                  </div>
-                </div>
-                <ul className="education__leadership-highlights">
-                  {item.highlights.map((highlight, idx) => (
-                    <li key={idx}>{highlight}</li>
-                  ))}
-                </ul>
-                {item.link && (
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="education__leadership-link"
-                  >
-                    View Profile →
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

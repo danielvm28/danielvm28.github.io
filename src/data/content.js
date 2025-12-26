@@ -273,9 +273,10 @@ export const leadership = [
 
 export const navLinks = [
   { id: "about", label: "About" },
+  { id: "education", label: "Education" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
-  { id: "education", label: "Education" },
+  { id: "leadership", label: "Leadership" },
   { id: "contact", label: "Contact" },
 ];
