@@ -114,7 +114,7 @@ export const projects = [
     description: "Built a <strong>CPR/AED awareness</strong> web application at the <strong>JPMC Code For Good Hackathon 2024</strong>, using React for the front-end and Flask for the back-end, including <strong>interactive training modules</strong> and emergency response guides.",
     techStack: ["React", "Flask"],
     image: heartInTheGame,
-    link: null,
+    link: "https://github.com/cfgdelaware24/Team-7",
   },
   {
     id: 2,
